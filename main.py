@@ -122,46 +122,10 @@ async def detect_emotion_api(
 
         result = detect_emotion(frame)
 
-        emotion = str(result.get("emotion", "Unknown"))
-        confidence = float(result.get("confidence", 0))
-
-        # Fear triggers a review alert.
-        # This is a project rule, not proof of danger.
-        alert = "Alert" if emotion.lower() == "fear" else "No Alert"
-
-        # -------------------------------------------------
-        # SAVE DETECTION TO DATABASE
-        # -------------------------------------------------
-
-        conn = sqlite3.connect(DATABASE_PATH)
-
-        try:
-            cursor = conn.cursor()
-
-            cursor.execute(
-                """
-                INSERT INTO emotions (emotion, confidence, alert, timestamp)
-                VALUES (?, ?, ?, datetime('now', 'localtime'))
-                """,
-                (emotion, confidence, alert)
-            )
-
-            conn.commit()
-
-        finally:
-            conn.close()
-
-        # -------------------------------------------------
-        # RETURN RESULT TO FRONTEND
-        # -------------------------------------------------
-
         return {
             "success": True,
-            **result,
-            "alert": alert
+            **result
         }
-
-
     except Exception as error:
 
         print(

@@ -10,7 +10,7 @@
    CONFIGURATION
 ===================================================== */
 
-const API_URL = "http://127.0.0.1:8000/detect-emotion";
+const API_URL = "/detect-emotion";
 const DEFAULT_INTERVAL = 3000;
 
 /* =====================================================
@@ -682,9 +682,7 @@ async function loadDashboardData() {
         const countElement = document.getElementById("todayAlertCount");
 
         try {
-            const alertResponse = await fetch(
-                "http://127.0.0.1:8000/alert-count"
-            );
+            const alertResponse = await fetch("/alert-count");
 
             if (alertResponse.ok) {
                 const alertData = await alertResponse.json();
