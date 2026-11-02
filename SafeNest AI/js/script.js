@@ -632,7 +632,7 @@ window.addEventListener("pagehide", () => {
 async function loadDashboardData() {
     try {
         // Load saved emotion records from FastAPI
-        const response = await fetch("http://127.0.0.1:8000/emotions");
+        const response = await fetch("/emotions");
 
         if (!response.ok) {
             throw new Error("Could not load emotion history.");
