@@ -1,6 +1,6 @@
 tensorflow
-opencv-python
-numpy
+opencv-python-headless==4.10.0.84
+numpy==1.26.4
 pandas
 scikit-learn
 matplotlib
@@ -8,5 +8,3 @@ h5py
 fastapi
 uvicorn
 python-multipart
-opencv-python-headless
-
