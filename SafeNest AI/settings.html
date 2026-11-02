@@ -1,0 +1,1143 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Settings | SafeNest AI</title>
+
+
+    <!-- Bootstrap -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+
+    <!-- Bootstrap Icons -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+
+    <!-- SafeNest CSS -->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+
+    <div class="brand">
+        <div class="brand-icon">
+            <i class="bi bi-shield-check"></i>
+        </div>
+
+        <div>
+            <h4>SafeNest</h4>
+            <span>AI</span>
+        </div>
+    </div>
+
+    <div class="menu-title">
+        MAIN MENU
+    </div>
+
+    <a href="index.html" class="nav-link">
+        <i class="bi bi-grid"></i>
+        <span>Dashboard</span>
+    </a>
+
+    <a href="monitoring.html" class="nav-link">
+        <i class="bi bi-camera-video"></i>
+        <span>Live Monitoring</span>
+    </a>
+
+    <a href="analytics.html" class="nav-link">
+        <i class="bi bi-bar-chart"></i>
+        <span>Analytics</span>
+    </a>
+
+    <a href="alerts.html" class="nav-link">
+        <i class="bi bi-bell"></i>
+        <span>Alerts</span>
+
+        <span class="alert-count">2</span>
+    </a>
+
+    <div class="menu-title settings-title">
+        SYSTEM
+    </div>
+
+    <a href="settings.html" class="nav-link active">
+        <i class="bi bi-gear"></i>
+        <span>Settings</span>
+    </a>
+
+    <div class="sidebar-bottom">
+
+        <div class="system-status">
+            <span class="status-dot"></span>
+
+            <div>
+                <strong>System Online</strong>
+                <small>All services active</small>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+<main class="main-content">
+
+
+    <!-- =================================================
+         TOP BAR
+    ================================================= -->
+
+    <header class="topbar">
+
+
+        <button
+            class="mobile-menu"
+            id="mobileMenu"
+        >
+
+            <i class="bi bi-list"></i>
+
+        </button>
+
+
+        <div>
+
+            <h1>
+                Settings
+            </h1>
+
+            <p>
+                Manage SafeNest AI monitoring settings
+            </p>
+
+        </div>
+
+
+        <div class="topbar-date">
+
+            <i class="bi bi-calendar3"></i>
+
+            <span id="currentDate"></span>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =================================================
+         SETTINGS CONTENT
+    ================================================= -->
+
+    <div class="row g-4">
+
+
+        <!-- =================================================
+             MONITORING SETTINGS
+        ================================================= -->
+
+        <div class="col-12">
+
+            <section class="card">
+
+                <div class="card-body">
+
+
+                    <div class="mb-4">
+
+                        <h3>
+                            <i class="bi bi-camera-video"></i>
+                            Monitoring Settings
+                        </h3>
+
+                        <p class="text-muted mb-0">
+                            Configure live child safety monitoring.
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- CAMERA -->
+
+                    <div
+                        class="d-flex justify-content-between align-items-center py-3 border-bottom"
+                    >
+
+                        <div>
+
+                            <h5 class="mb-1">
+                                Camera Monitoring
+                            </h5>
+
+                            <p class="text-muted mb-0">
+                                Allow SafeNest to use the webcam for monitoring.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-check form-switch">
+
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id="cameraMonitoring"
+                                checked
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- AI DETECTION -->
+
+                    <div
+                        class="d-flex justify-content-between align-items-center py-3 border-bottom"
+                    >
+
+                        <div>
+
+                            <h5 class="mb-1">
+                                AI Emotion Detection
+                            </h5>
+
+                            <p class="text-muted mb-0">
+                                Enable AI-based emotion detection.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-check form-switch">
+
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id="aiDetection"
+                                checked
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- AUTOMATIC ALERTS -->
+
+                    <div
+                        class="d-flex justify-content-between align-items-center py-3"
+                    >
+
+                        <div>
+
+                            <h5 class="mb-1">
+                                Automatic Alerts
+                            </h5>
+
+                            <p class="text-muted mb-0">
+                                Generate safety alerts when fear is detected.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-check form-switch">
+
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id="automaticAlerts"
+                                checked
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+
+        <!-- =================================================
+             DETECTION SETTINGS
+        ================================================= -->
+
+        <div class="col-12">
+
+            <section class="card">
+
+                <div class="card-body">
+
+
+                    <div class="mb-4">
+
+                        <h3>
+                            <i class="bi bi-cpu"></i>
+                            AI Detection Settings
+                        </h3>
+
+                        <p class="text-muted mb-0">
+                            Configure how frequently SafeNest checks the camera.
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- DETECTION INTERVAL -->
+
+                    <div class="mb-4">
+
+                        <label
+                            for="detectionInterval"
+                            class="form-label fw-semibold"
+                        >
+                            Detection Interval
+                        </label>
+
+
+                        <select
+                            class="form-select"
+                            id="detectionInterval"
+                        >
+
+                            <option value="2">
+                                Every 2 seconds
+                            </option>
+
+                            <option
+                                value="3"
+                                selected
+                            >
+                                Every 3 seconds
+                            </option>
+
+                            <option value="5">
+                                Every 5 seconds
+                            </option>
+
+                            <option value="10">
+                                Every 10 seconds
+                            </option>
+
+                        </select>
+
+
+                        <small class="text-muted">
+                            Determines how often a camera frame is sent to the AI.
+                        </small>
+
+                    </div>
+
+
+
+                    <!-- CONFIDENCE -->
+
+                    <div class="mb-4">
+
+                        <label
+                            for="confidenceThreshold"
+                            class="form-label fw-semibold"
+                        >
+                            Confidence Threshold
+                        </label>
+
+
+                        <div class="d-flex align-items-center gap-3">
+
+                            <input
+                                type="range"
+                                class="form-range"
+                                id="confidenceThreshold"
+                                min="10"
+                                max="90"
+                                value="30"
+                            >
+
+
+                            <strong
+                                id="confidenceValue"
+                                style="min-width: 50px;"
+                            >
+                                30%
+                            </strong>
+
+                        </div>
+
+
+                        <small class="text-muted">
+                            Minimum AI confidence used for displaying a detection.
+                        </small>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+
+        <!-- =================================================
+             NOTIFICATION SETTINGS
+        ================================================= -->
+
+        <div class="col-12">
+
+            <section class="card">
+
+                <div class="card-body">
+
+
+                    <div class="mb-4">
+
+                        <h3>
+
+                            <i class="bi bi-bell"></i>
+
+                            Notification Settings
+
+                        </h3>
+
+                        <p class="text-muted mb-0">
+                            Manage safety notification preferences.
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- ALERT SOUND -->
+
+                    <div
+                        class="d-flex justify-content-between align-items-center py-3 border-bottom"
+                    >
+
+                        <div>
+
+                            <h5 class="mb-1">
+                                Alert Sound
+                            </h5>
+
+                            <p class="text-muted mb-0">
+                                Play a sound when a safety alert occurs.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-check form-switch">
+
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id="alertSound"
+                                checked
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- DESKTOP NOTIFICATION -->
+
+                    <div
+                        class="d-flex justify-content-between align-items-center py-3"
+                    >
+
+                        <div>
+
+                            <h5 class="mb-1">
+                                Browser Notifications
+                            </h5>
+
+                            <p class="text-muted mb-0">
+                                Allow SafeNest to display browser notifications.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-check form-switch">
+
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id="browserNotifications"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+
+        <!-- =================================================
+             SAVE / RESET
+        ================================================= -->
+
+        <div class="col-12">
+
+            <section class="card">
+
+                <div class="card-body">
+
+
+                    <div
+                        class="d-flex flex-wrap gap-3"
+                    >
+
+                        <button
+                            id="saveSettings"
+                            class="btn btn-primary"
+                        >
+
+                            <i class="bi bi-check-lg"></i>
+
+                            Save Settings
+
+                        </button>
+
+
+                        <button
+                            id="resetSettings"
+                            class="btn btn-outline-secondary"
+                        >
+
+                            <i class="bi bi-arrow-counterclockwise"></i>
+
+                            Reset
+
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="settingsMessage"
+                        class="mt-3"
+                    ></div>
+
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+    </div>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   CURRENT DATE
+===================================================== */
+
+const currentDate =
+    document.getElementById(
+        "currentDate"
+    );
+
+
+if (currentDate) {
+
+    const today =
+        new Date();
+
+
+    currentDate.textContent =
+        today.toLocaleDateString(
+            "en-IN",
+            {
+                day: "2-digit",
+                month: "short",
+                year: "numeric"
+            }
+        );
+
+}
+
+
+
+/* =====================================================
+   DEFAULT SETTINGS
+===================================================== */
+
+const defaultSettings = {
+
+    cameraMonitoring: true,
+
+    aiDetection: true,
+
+    automaticAlerts: true,
+
+    detectionInterval: "3",
+
+    confidenceThreshold: "30",
+
+    alertSound: true,
+
+    browserNotifications: false
+
+};
+
+
+
+/* =====================================================
+   LOAD SETTINGS
+===================================================== */
+
+function loadSettings() {
+
+
+    const savedSettings =
+        localStorage.getItem(
+            "safenestSettings"
+        );
+
+
+    if (!savedSettings) {
+
+        applySettings(
+            defaultSettings
+        );
+
+        return;
+
+    }
+
+
+    try {
+
+        const settings =
+            JSON.parse(
+                savedSettings
+            );
+
+
+        applySettings(
+            settings
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Unable to load settings:",
+            error
+        );
+
+
+        applySettings(
+            defaultSettings
+        );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   APPLY SETTINGS TO PAGE
+===================================================== */
+
+function applySettings(
+    settings
+) {
+
+
+    document.getElementById(
+        "cameraMonitoring"
+    ).checked =
+        settings.cameraMonitoring;
+
+
+    document.getElementById(
+        "aiDetection"
+    ).checked =
+        settings.aiDetection;
+
+
+    document.getElementById(
+        "automaticAlerts"
+    ).checked =
+        settings.automaticAlerts;
+
+
+    document.getElementById(
+        "detectionInterval"
+    ).value =
+        settings.detectionInterval;
+
+
+    document.getElementById(
+        "confidenceThreshold"
+    ).value =
+        settings.confidenceThreshold;
+
+
+    document.getElementById(
+        "alertSound"
+    ).checked =
+        settings.alertSound;
+
+
+    document.getElementById(
+        "browserNotifications"
+    ).checked =
+        settings.browserNotifications;
+
+
+    updateConfidenceValue();
+
+}
+
+
+
+/* =====================================================
+   GET SETTINGS FROM PAGE
+===================================================== */
+
+function getSettings() {
+
+    return {
+
+        cameraMonitoring:
+            document.getElementById(
+                "cameraMonitoring"
+            ).checked,
+
+
+        aiDetection:
+            document.getElementById(
+                "aiDetection"
+            ).checked,
+
+
+        automaticAlerts:
+            document.getElementById(
+                "automaticAlerts"
+            ).checked,
+
+
+        detectionInterval:
+            document.getElementById(
+                "detectionInterval"
+            ).value,
+
+
+        confidenceThreshold:
+            document.getElementById(
+                "confidenceThreshold"
+            ).value,
+
+
+        alertSound:
+            document.getElementById(
+                "alertSound"
+            ).checked,
+
+
+        browserNotifications:
+            document.getElementById(
+                "browserNotifications"
+            ).checked
+
+    };
+
+}
+
+
+
+/* =====================================================
+   CONFIDENCE VALUE
+===================================================== */
+
+const confidenceThreshold =
+    document.getElementById(
+        "confidenceThreshold"
+    );
+
+
+const confidenceValue =
+    document.getElementById(
+        "confidenceValue"
+    );
+
+
+function updateConfidenceValue() {
+
+    if (
+        confidenceThreshold &&
+        confidenceValue
+    ) {
+
+        confidenceValue.textContent =
+            confidenceThreshold.value +
+            "%";
+
+    }
+
+}
+
+
+if (confidenceThreshold) {
+
+    confidenceThreshold.addEventListener(
+        "input",
+        updateConfidenceValue
+    );
+
+}
+
+
+
+/* =====================================================
+   SAVE SETTINGS
+===================================================== */
+
+const saveSettings =
+    document.getElementById(
+        "saveSettings"
+    );
+
+
+const settingsMessage =
+    document.getElementById(
+        "settingsMessage"
+    );
+
+
+if (saveSettings) {
+
+    saveSettings.addEventListener(
+        "click",
+        function () {
+
+
+            const settings =
+                getSettings();
+
+
+            localStorage.setItem(
+                "safenestSettings",
+                JSON.stringify(
+                    settings
+                )
+            );
+
+
+            settingsMessage.innerHTML = `
+
+                <div class="alert alert-success">
+
+                    <i class="bi bi-check-circle-fill"></i>
+
+                    Settings saved successfully.
+
+                </div>
+
+            `;
+
+
+            setTimeout(
+                function () {
+
+                    settingsMessage.innerHTML =
+                        "";
+
+                },
+                3000
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   RESET SETTINGS
+===================================================== */
+
+const resetSettings =
+    document.getElementById(
+        "resetSettings"
+    );
+
+
+if (resetSettings) {
+
+    resetSettings.addEventListener(
+        "click",
+        function () {
+
+
+            const confirmReset =
+                confirm(
+                    "Reset SafeNest settings to default?"
+                );
+
+
+            if (!confirmReset) {
+
+                return;
+
+            }
+
+
+            localStorage.setItem(
+                "safenestSettings",
+                JSON.stringify(
+                    defaultSettings
+                )
+            );
+
+
+            applySettings(
+                defaultSettings
+            );
+
+
+            settingsMessage.innerHTML = `
+
+                <div class="alert alert-info">
+
+                    <i class="bi bi-info-circle-fill"></i>
+
+                    Settings have been reset.
+
+                </div>
+
+            `;
+
+
+            setTimeout(
+                function () {
+
+                    settingsMessage.innerHTML =
+                        "";
+
+                },
+                3000
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   BROWSER NOTIFICATIONS
+===================================================== */
+
+const browserNotifications =
+    document.getElementById(
+        "browserNotifications"
+    );
+
+
+if (browserNotifications) {
+
+    browserNotifications.addEventListener(
+        "change",
+        async function () {
+
+
+            if (
+                browserNotifications.checked
+            ) {
+
+
+                if (
+                    !("Notification" in window)
+                ) {
+
+                    alert(
+                        "Browser notifications are not supported."
+                    );
+
+
+                    browserNotifications.checked =
+                        false;
+
+
+                    return;
+
+                }
+
+
+                const permission =
+                    await Notification.requestPermission();
+
+
+                if (
+                    permission !== "granted"
+                ) {
+
+                    browserNotifications.checked =
+                        false;
+
+                }
+
+            }
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   MOBILE SIDEBAR
+===================================================== */
+
+const mobileMenu =
+    document.getElementById(
+        "mobileMenu"
+    );
+
+
+const sidebar =
+    document.querySelector(
+        ".sidebar"
+    );
+
+
+if (
+    mobileMenu &&
+    sidebar
+) {
+
+    mobileMenu.addEventListener(
+        "click",
+        function () {
+
+            sidebar.classList.toggle(
+                "show"
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   CLOSE SIDEBAR OUTSIDE
+===================================================== */
+
+document.addEventListener(
+    "click",
+    function (event) {
+
+
+        if (
+            window.innerWidth <= 800 &&
+            sidebar &&
+            mobileMenu &&
+            !sidebar.contains(
+                event.target
+            ) &&
+            !mobileMenu.contains(
+                event.target
+            )
+        ) {
+
+            sidebar.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   START
+===================================================== */
+
+loadSettings();
+
+
+</script>
+
+
+</body>
+
+</html>

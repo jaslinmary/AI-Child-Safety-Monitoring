@@ -1,0 +1,1122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Analytics | SafeNest AI</title>
+
+
+    <!-- Bootstrap -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+
+    <!-- Bootstrap Icons -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+
+    <!-- SafeNest CSS -->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+<!-- SIDEBAR -->
+<div class="sidebar">
+
+    <div class="brand">
+        <div class="brand-icon">
+            <i class="bi bi-shield-check"></i>
+        </div>
+
+        <div>
+            <h4>SafeNest</h4>
+            <span>AI</span>
+        </div>
+    </div>
+
+    <div class="menu-title">
+        MAIN MENU
+    </div>
+
+    <a href="index.html" class="nav-link ">
+        <i class="bi bi-grid"></i>
+        <span>Dashboard</span>
+    </a>
+
+    <a href="monitoring.html" class="nav-link">
+        <i class="bi bi-camera-video"></i>
+        <span>Live Monitoring</span>
+    </a>
+
+    <a href="analytics.html" class="nav-link active">
+        <i class="bi bi-bar-chart"></i>
+        <span>Analytics</span>
+    </a>
+
+    <a href="alerts.html" class="nav-link">
+        <i class="bi bi-bell"></i>
+        <span>Alerts</span>
+
+        <span class="alert-count">2</span>
+    </a>
+
+    <div class="menu-title settings-title">
+        SYSTEM
+    </div>
+
+    <a href="settings.html" class="nav-link">
+        <i class="bi bi-gear"></i>
+        <span>Settings</span>
+    </a>
+
+    <div class="sidebar-bottom">
+
+        <div class="system-status">
+            <span class="status-dot"></span>
+
+            <div>
+                <strong>System Online</strong>
+                <small>All services active</small>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+<main class="main-content">
+
+
+    <!-- TOP BAR -->
+
+    <header class="topbar">
+
+        <button
+            class="mobile-menu"
+            id="mobileMenu"
+        >
+            <i class="bi bi-list"></i>
+        </button>
+
+
+        <div>
+
+            <h1>Analytics</h1>
+
+            <p>
+                AI emotion detection analytics
+            </p>
+
+        </div>
+
+
+        <div class="topbar-date">
+
+            <i class="bi bi-calendar3"></i>
+
+            <span id="currentDate"></span>
+
+        </div>
+
+    </header>
+
+
+    <!-- =================================================
+         LOADING
+    ================================================= -->
+
+    <div
+        id="analyticsLoading"
+        class="text-center py-5"
+    >
+
+        <div
+            class="spinner-border"
+            role="status"
+        ></div>
+
+        <p class="mt-3">
+            Loading AI analytics...
+        </p>
+
+    </div>
+
+
+    <!-- =================================================
+         ERROR
+    ================================================= -->
+
+    <div
+        id="analyticsError"
+        class="alert alert-danger d-none"
+    >
+
+        <i class="bi bi-exclamation-triangle"></i>
+
+        <span id="errorMessage">
+            Unable to load analytics.
+        </span>
+
+    </div>
+
+
+    <!-- =================================================
+         ANALYTICS CONTENT
+    ================================================= -->
+
+    <div
+        id="analyticsContent"
+        class="d-none"
+    >
+
+
+        <!-- =================================================
+             SUMMARY CARDS
+        ================================================= -->
+
+        <section class="row g-4 mb-4">
+
+
+            <!-- TOTAL DETECTIONS -->
+
+            <div class="col-md-6 col-xl-3">
+
+                <div class="card h-100">
+
+                    <div class="card-body">
+
+                        <div class="d-flex justify-content-between">
+
+                            <div>
+
+                                <p class="text-muted mb-1">
+                                    Total Detections
+                                </p>
+
+                                <h2
+                                    id="totalDetections"
+                                    class="mb-0"
+                                >
+                                    0
+                                </h2>
+
+                            </div>
+
+
+                            <div class="fs-2">
+                                <i class="bi bi-eye"></i>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TOTAL ALERTS -->
+
+            <div class="col-md-6 col-xl-3">
+
+                <div class="card h-100">
+
+                    <div class="card-body">
+
+                        <div class="d-flex justify-content-between">
+
+                            <div>
+
+                                <p class="text-muted mb-1">
+                                    Total Alerts
+                                </p>
+
+                                <h2
+                                    id="totalAlerts"
+                                    class="mb-0"
+                                >
+                                    0
+                                </h2>
+
+                            </div>
+
+
+                            <div class="fs-2">
+                                <i class="bi bi-exclamation-triangle"></i>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- AVERAGE CONFIDENCE -->
+
+            <div class="col-md-6 col-xl-3">
+
+                <div class="card h-100">
+
+                    <div class="card-body">
+
+                        <div class="d-flex justify-content-between">
+
+                            <div>
+
+                                <p class="text-muted mb-1">
+                                    Average Confidence
+                                </p>
+
+                                <h2
+                                    id="averageConfidence"
+                                    class="mb-0"
+                                >
+                                    0%
+                                </h2>
+
+                            </div>
+
+
+                            <div class="fs-2">
+                                <i class="bi bi-graph-up"></i>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FEAR DETECTIONS -->
+
+            <div class="col-md-6 col-xl-3">
+
+                <div class="card h-100">
+
+                    <div class="card-body">
+
+                        <div class="d-flex justify-content-between">
+
+                            <div>
+
+                                <p class="text-muted mb-1">
+                                    Fear Detections
+                                </p>
+
+                                <h2
+                                    id="fearDetections"
+                                    class="mb-0"
+                                >
+                                    0
+                                </h2>
+
+                            </div>
+
+
+                            <div class="fs-2">
+                                <i class="bi bi-shield-exclamation"></i>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             EMOTION DISTRIBUTION
+        ================================================= -->
+
+        <section class="card mb-4">
+
+            <div class="card-body">
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+
+                    <div>
+
+                        <h3>
+                            Emotion Distribution
+                        </h3>
+
+                        <p class="text-muted mb-0">
+                            Detected emotions from the AI model
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        id="refreshAnalytics"
+                        class="btn btn-primary"
+                    >
+
+                        <i class="bi bi-arrow-clockwise"></i>
+
+                        Refresh
+
+                    </button>
+
+                </div>
+
+
+                <!-- Emotion bars -->
+
+                <div id="emotionBars"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             RECENT DETECTIONS
+        ================================================= -->
+
+        <section class="card">
+
+            <div class="card-body">
+
+                <div class="mb-4">
+
+                    <h3>
+                        Recent Detections
+                    </h3>
+
+                    <p class="text-muted mb-0">
+                        Latest AI monitoring results stored in SQLite
+                    </p>
+
+                </div>
+
+
+                <div class="table-responsive">
+
+                    <table class="table align-middle">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>ID</th>
+
+                                <th>Emotion</th>
+
+                                <th>Confidence</th>
+
+                                <th>Alert</th>
+
+                                <th>Timestamp</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="detectionsTable">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </div>
+
+
+</main>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+/* =====================================================
+   CURRENT DATE
+===================================================== */
+
+const currentDate =
+    document.getElementById("currentDate");
+
+
+if (currentDate) {
+
+    const today =
+        new Date();
+
+    currentDate.textContent =
+        today.toLocaleDateString(
+            "en-IN",
+            {
+                day: "2-digit",
+                month: "short",
+                year: "numeric"
+            }
+        );
+
+}
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const loading =
+    document.getElementById(
+        "analyticsLoading"
+    );
+
+
+const content =
+    document.getElementById(
+        "analyticsContent"
+    );
+
+
+const errorBox =
+    document.getElementById(
+        "analyticsError"
+    );
+
+
+const errorMessage =
+    document.getElementById(
+        "errorMessage"
+    );
+
+
+const totalDetections =
+    document.getElementById(
+        "totalDetections"
+    );
+
+
+const totalAlerts =
+    document.getElementById(
+        "totalAlerts"
+    );
+
+
+const averageConfidence =
+    document.getElementById(
+        "averageConfidence"
+    );
+
+
+const fearDetections =
+    document.getElementById(
+        "fearDetections"
+    );
+
+
+const emotionBars =
+    document.getElementById(
+        "emotionBars"
+    );
+
+
+const detectionsTable =
+    document.getElementById(
+        "detectionsTable"
+    );
+
+
+const refreshAnalytics =
+    document.getElementById(
+        "refreshAnalytics"
+    );
+
+
+/* =====================================================
+   EMOTION ICONS
+===================================================== */
+
+const emotionIcons = {
+
+    "Happy": "😊",
+
+    "Sad": "😢",
+
+    "Angry": "😠",
+
+    "Fear": "😨",
+
+    "Disgust": "🤢",
+
+    "Surprise": "😮",
+
+    "Neutral": "😐",
+
+    "No Face": "👤"
+
+};
+
+
+/* =====================================================
+   LOAD ANALYTICS
+===================================================== */
+
+async function loadAnalytics() {
+
+    try {
+
+        loading.classList.remove(
+            "d-none"
+        );
+
+        content.classList.add(
+            "d-none"
+        );
+
+        errorBox.classList.add(
+            "d-none"
+        );
+
+
+        /* =============================================
+           GET DATA FROM FASTAPI
+        ============================================= */
+
+        const response =
+            await fetch(
+                "http://127.0.0.1:8000/emotions"
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "FastAPI returned HTTP " +
+                response.status
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        console.log(
+            "Analytics data:",
+            data
+        );
+
+
+        /* =============================================
+           CALCULATE STATISTICS
+        ============================================= */
+
+        calculateStatistics(
+            data
+        );
+
+
+        /* =============================================
+           DISPLAY EMOTION DISTRIBUTION
+        ============================================= */
+
+        displayEmotionDistribution(
+            data
+        );
+
+
+        /* =============================================
+           DISPLAY RECENT DETECTIONS
+        ============================================= */
+
+        displayRecentDetections(
+            data
+        );
+
+
+        /* =============================================
+           SHOW CONTENT
+        ============================================= */
+
+        loading.classList.add(
+            "d-none"
+        );
+
+        content.classList.remove(
+            "d-none"
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Analytics error:",
+            error
+        );
+
+
+        loading.classList.add(
+            "d-none"
+        );
+
+
+        errorBox.classList.remove(
+            "d-none"
+        );
+
+
+        errorMessage.textContent =
+            "Unable to connect to SafeNest AI backend. Make sure FastAPI is running.";
+
+    }
+
+}
+
+
+/* =====================================================
+   CALCULATE STATISTICS
+===================================================== */
+
+function calculateStatistics(
+    data
+) {
+
+    const total =
+        data.length;
+
+
+   const alerts =
+    data.filter(item =>
+        item.alert?.trim().toLowerCase() === "alert" ||
+        item.alert?.trim().toLowerCase() === "alert sent" ||
+        item.emotion?.trim().toLowerCase() === "fear"
+    ).length;
+
+
+    const fear =
+        data.filter(
+            item =>
+                item.emotion === "Fear"
+        ).length;
+
+
+    let confidenceTotal = 0;
+
+    let confidenceCount = 0;
+
+
+    data.forEach(
+        function (item) {
+
+            const confidence =
+                Number(
+                    item.confidence
+                );
+
+
+            if (
+                !isNaN(confidence)
+            ) {
+
+                confidenceTotal +=
+                    confidence;
+
+                confidenceCount++;
+
+            }
+
+        }
+    );
+
+
+    const average =
+        confidenceCount > 0
+            ? confidenceTotal /
+              confidenceCount
+            : 0;
+
+
+    totalDetections.textContent =
+        total;
+
+
+    totalAlerts.textContent =
+        alerts;
+
+
+    fearDetections.textContent =
+        fear;
+
+
+    averageConfidence.textContent =
+        average.toFixed(1) + "%";
+
+}
+
+
+/* =====================================================
+   EMOTION DISTRIBUTION
+===================================================== */
+
+function displayEmotionDistribution(
+    data
+) {
+
+    const emotionCounts = {
+
+        "Happy": 0,
+
+        "Sad": 0,
+
+        "Angry": 0,
+
+        "Fear": 0,
+
+        "Disgust": 0,
+
+        "Surprise": 0,
+
+        "Neutral": 0,
+
+        "No Face": 0
+
+    };
+
+
+    data.forEach(
+        function (item) {
+
+            if (
+                emotionCounts.hasOwnProperty(
+                    item.emotion
+                )
+            ) {
+
+                emotionCounts[
+                    item.emotion
+                ]++;
+
+            }
+
+        }
+    );
+
+
+    const total =
+        data.length;
+
+
+    emotionBars.innerHTML =
+        "";
+
+
+    Object.keys(
+        emotionCounts
+    ).forEach(
+        function (emotion) {
+
+            const count =
+                emotionCounts[
+                    emotion
+                ];
+
+
+            const percentage =
+                total > 0
+                    ? (count / total) * 100
+                    : 0;
+
+
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+
+            row.className =
+                "mb-4";
+
+
+            row.innerHTML = `
+
+                <div class="d-flex justify-content-between mb-1">
+
+                    <span>
+                        ${emotionIcons[emotion] || "🙂"}
+                        ${emotion}
+                    </span>
+
+                    <strong>
+                        ${count}
+                        (${percentage.toFixed(1)}%)
+                    </strong>
+
+                </div>
+
+
+                <div
+                    class="progress"
+                    style="height: 10px;"
+                >
+
+                    <div
+                        class="progress-bar"
+                        role="progressbar"
+                        style="width: ${percentage}%"
+                    ></div>
+
+                </div>
+
+            `;
+
+
+            emotionBars.appendChild(
+                row
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   RECENT DETECTIONS
+===================================================== */
+
+function displayRecentDetections(
+    data
+) {
+
+    detectionsTable.innerHTML =
+        "";
+
+
+    /* Show latest 20 */
+
+    const recentData =
+        data.slice(
+            0,
+            20
+        );
+
+
+    if (
+        recentData.length === 0
+    ) {
+
+        detectionsTable.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="5"
+                    class="text-center text-muted"
+                >
+                    No detections found.
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+
+    }
+
+
+    recentData.forEach(
+        function (item) {
+
+            const row =
+                document.createElement(
+                    "tr"
+                );
+
+
+           const isAlert =
+    item.alert?.trim().toLowerCase() === "alert" ||
+    item.alert?.trim().toLowerCase() === "alert sent" ||
+    item.emotion?.trim().toLowerCase() === "fear";
+
+           
+
+
+            row.innerHTML = `
+
+                <td>
+                    ${item.id}
+                </td>
+
+
+                <td>
+
+                    <strong>
+
+                        ${
+                            emotionIcons[
+                                item.emotion
+                            ] || "🙂"
+                        }
+
+                        ${item.emotion}
+
+                    </strong>
+
+                </td>
+
+
+                <td>
+
+                    ${
+                        Number(
+                            item.confidence || 0
+                        ).toFixed(1)
+                    }%
+
+                </td>
+
+
+                <td>
+
+                    ${
+                        isAlert
+                            ? '<span class="badge bg-danger">Alert Sent</span>'
+                            : '<span class="badge bg-success">No Alert</span>'
+                    }
+
+                </td>
+
+
+                <td>
+
+                    ${item.timestamp}
+
+                </td>
+
+            `;
+
+
+            detectionsTable.appendChild(
+                row
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   REFRESH BUTTON
+===================================================== */
+
+if (refreshAnalytics) {
+
+    refreshAnalytics.addEventListener(
+        "click",
+        function () {
+
+            loadAnalytics();
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   MOBILE SIDEBAR
+===================================================== */
+
+const mobileMenu =
+    document.getElementById(
+        "mobileMenu"
+    );
+
+
+const sidebar =
+    document.querySelector(
+        ".sidebar"
+    );
+
+
+if (
+    mobileMenu &&
+    sidebar
+) {
+
+    mobileMenu.addEventListener(
+        "click",
+        function () {
+
+            sidebar.classList.toggle(
+                "show"
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+loadAnalytics();
+
+</script>
+
+
+</body>
+
+</html>

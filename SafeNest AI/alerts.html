@@ -1,0 +1,1009 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Alerts | SafeNest AI</title>
+
+
+    <!-- Bootstrap -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+
+    <!-- Bootstrap Icons -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+
+    <!-- SafeNest CSS -->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+
+    <div class="brand">
+        <div class="brand-icon">
+            <i class="bi bi-shield-check"></i>
+        </div>
+
+        <div>
+            <h4>SafeNest</h4>
+            <span>AI</span>
+        </div>
+    </div>
+
+    <div class="menu-title">
+        MAIN MENU
+    </div>
+
+    <a href="index.html" class="nav-link ">
+        <i class="bi bi-grid"></i>
+        <span>Dashboard</span>
+    </a>
+
+    <a href="monitoring.html" class="nav-link">
+        <i class="bi bi-camera-video"></i>
+        <span>Live Monitoring</span>
+    </a>
+
+    <a href="analytics.html" class="nav-link">
+        <i class="bi bi-bar-chart"></i>
+        <span>Analytics</span>
+    </a>
+
+    <a href="alerts.html" class="nav-link active">
+        <i class="bi bi-bell"></i>
+        <span>Alerts</span>
+
+        <span class="alert-count">2</span>
+    </a>
+
+    <div class="menu-title settings-title">
+        SYSTEM
+    </div>
+
+    <a href="settings.html" class="nav-link">
+        <i class="bi bi-gear"></i>
+        <span>Settings</span>
+    </a>
+
+    <div class="sidebar-bottom">
+
+        <div class="system-status">
+            <span class="status-dot"></span>
+
+            <div>
+                <strong>System Online</strong>
+                <small>All services active</small>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+<main class="main-content">
+
+
+    <!-- =================================================
+         TOP BAR
+    ================================================= -->
+
+    <header class="topbar">
+
+
+        <button
+            class="mobile-menu"
+            id="mobileMenu"
+        >
+
+            <i class="bi bi-list"></i>
+
+        </button>
+
+
+        <div>
+
+            <h1>Alerts</h1>
+
+            <p>
+                AI safety alerts and emergency detections
+            </p>
+
+        </div>
+
+
+        <div class="topbar-date">
+
+            <i class="bi bi-calendar3"></i>
+
+            <span id="currentDate"></span>
+
+        </div>
+
+
+    </header>
+
+
+
+    <!-- =================================================
+         LOADING
+    ================================================= -->
+
+    <div
+        id="alertsLoading"
+        class="text-center py-5"
+    >
+
+        <div
+            class="spinner-border"
+            role="status"
+        ></div>
+
+        <p class="mt-3">
+            Loading alerts...
+        </p>
+
+    </div>
+
+
+
+    <!-- =================================================
+         ERROR
+    ================================================= -->
+
+    <div
+        id="alertsError"
+        class="alert alert-danger d-none"
+    >
+
+        <i class="bi bi-exclamation-triangle-fill"></i>
+
+        <span id="errorMessage">
+            Unable to load alerts.
+        </span>
+
+    </div>
+
+
+
+    <!-- =================================================
+         ALERT CONTENT
+    ================================================= -->
+
+    <div
+        id="alertsContent"
+        class="d-none"
+    >
+
+
+        <!-- =================================================
+             SUMMARY CARDS
+        ================================================= -->
+
+        <section class="row g-4 mb-4">
+
+
+            <!-- TOTAL ALERTS -->
+
+            <div class="col-md-6 col-xl-4">
+
+                <div class="card h-100">
+
+                    <div class="card-body">
+
+                        <div class="d-flex justify-content-between align-items-center">
+
+
+                            <div>
+
+                                <p class="text-muted mb-1">
+                                    Total Alerts
+                                </p>
+
+
+                                <h2
+                                    id="totalAlerts"
+                                    class="mb-0"
+                                >
+                                    0
+                                </h2>
+
+                            </div>
+
+
+                            <div class="fs-1">
+
+                                <i class="bi bi-bell-fill"></i>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FEAR DETECTIONS -->
+
+            <div class="col-md-6 col-xl-4">
+
+                <div class="card h-100">
+
+                    <div class="card-body">
+
+                        <div class="d-flex justify-content-between align-items-center">
+
+
+                            <div>
+
+                                <p class="text-muted mb-1">
+                                    Fear Detections
+                                </p>
+
+
+                                <h2
+                                    id="fearAlerts"
+                                    class="mb-0"
+                                >
+                                    0
+                                </h2>
+
+                            </div>
+
+
+                            <div class="fs-1">
+
+                                😨
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- LATEST ALERT -->
+
+            <div class="col-md-12 col-xl-4">
+
+                <div class="card h-100">
+
+                    <div class="card-body">
+
+                        <p class="text-muted mb-1">
+                            Latest Alert
+                        </p>
+
+
+                        <h4
+                            id="latestAlert"
+                            class="mb-2"
+                        >
+                            No alerts
+                        </h4>
+
+
+                        <small
+                            id="latestAlertTime"
+                            class="text-muted"
+                        >
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             ALERT STATUS
+        ================================================= -->
+
+        <section class="card mb-4">
+
+            <div class="card-body">
+
+                <div
+                    class="d-flex justify-content-between align-items-center"
+                >
+
+                    <div>
+
+                        <h3 class="mb-1">
+                            Safety Alert History
+                        </h3>
+
+                        <p class="text-muted mb-0">
+                            Alerts generated by the AI emotion detection system
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        id="refreshAlerts"
+                        class="btn btn-primary"
+                    >
+
+                        <i class="bi bi-arrow-clockwise"></i>
+
+                        Refresh
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ALERT LIST
+        ================================================= -->
+
+        <section class="card">
+
+            <div class="card-body">
+
+
+                <div
+                    id="noAlerts"
+                    class="text-center py-5 d-none"
+                >
+
+                    <div class="fs-1 mb-3">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+
+
+                    <h4>
+                        No Alerts
+                    </h4>
+
+
+                    <p class="text-muted">
+                        No safety alerts have been detected.
+                    </p>
+
+                </div>
+
+
+
+                <!-- ALERT TABLE -->
+
+                <div
+                    id="alertsTableContainer"
+                    class="table-responsive"
+                >
+
+                    <table class="table align-middle">
+
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    ID
+                                </th>
+
+
+                                <th>
+                                    Emotion
+                                </th>
+
+
+                                <th>
+                                    Confidence
+                                </th>
+
+
+                                <th>
+                                    Status
+                                </th>
+
+
+                                <th>
+                                    Date & Time
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="alertsTable">
+
+                        </tbody>
+
+
+                    </table>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </div>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   CURRENT DATE
+===================================================== */
+
+const currentDate =
+    document.getElementById(
+        "currentDate"
+    );
+
+
+if (currentDate) {
+
+    const today =
+        new Date();
+
+
+    currentDate.textContent =
+        today.toLocaleDateString(
+            "en-IN",
+            {
+                day: "2-digit",
+                month: "short",
+                year: "numeric"
+            }
+        );
+
+}
+
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const alertsLoading =
+    document.getElementById(
+        "alertsLoading"
+    );
+
+
+const alertsContent =
+    document.getElementById(
+        "alertsContent"
+    );
+
+
+const alertsError =
+    document.getElementById(
+        "alertsError"
+    );
+
+
+const errorMessage =
+    document.getElementById(
+        "errorMessage"
+    );
+
+
+const totalAlerts =
+    document.getElementById(
+        "totalAlerts"
+    );
+
+
+const fearAlerts =
+    document.getElementById(
+        "fearAlerts"
+    );
+
+
+const latestAlert =
+    document.getElementById(
+        "latestAlert"
+    );
+
+
+const latestAlertTime =
+    document.getElementById(
+        "latestAlertTime"
+    );
+
+
+const alertsTable =
+    document.getElementById(
+        "alertsTable"
+    );
+
+
+const noAlerts =
+    document.getElementById(
+        "noAlerts"
+    );
+
+
+const alertsTableContainer =
+    document.getElementById(
+        "alertsTableContainer"
+    );
+
+
+const refreshAlerts =
+    document.getElementById(
+        "refreshAlerts"
+    );
+
+
+
+/* =====================================================
+   LOAD ALERTS
+===================================================== */
+
+async function loadAlerts() {
+
+    try {
+
+
+        /* Show loading */
+
+        alertsLoading.classList.remove(
+            "d-none"
+        );
+
+
+        alertsContent.classList.add(
+            "d-none"
+        );
+
+
+        alertsError.classList.add(
+            "d-none"
+        );
+
+
+        /* =================================================
+           GET DATA FROM FASTAPI
+        ================================================= */
+
+        const response =
+            await fetch(
+                "http://127.0.0.1:8000/emotions"
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "FastAPI returned HTTP " +
+                response.status
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        console.log(
+            "All emotion records:",
+            data
+        );
+
+
+        /* =================================================
+           GET ONLY ALERT RECORDS
+        ================================================= */
+
+      const alerts = data.filter(function (item) {
+    return (
+        typeof item.alert === "string" &&
+        item.alert.toLowerCase() === "alert"
+    );
+});
+
+        console.log(
+            "Alert records:",
+            alerts
+        );
+
+
+        /* =================================================
+           UPDATE SUMMARY
+        ================================================= */
+
+        updateAlertSummary(
+            alerts
+        );
+
+
+        /* =================================================
+           DISPLAY ALERT TABLE
+        ================================================= */
+
+        displayAlerts(
+            alerts
+        );
+
+
+        /* Show content */
+
+        alertsLoading.classList.add(
+            "d-none"
+        );
+
+
+        alertsContent.classList.remove(
+            "d-none"
+        );
+
+
+    } catch (error) {
+
+
+        console.error(
+            "Alert loading error:",
+            error
+        );
+
+
+        alertsLoading.classList.add(
+            "d-none"
+        );
+
+
+        alertsError.classList.remove(
+            "d-none"
+        );
+
+
+        errorMessage.textContent =
+            "Unable to connect to SafeNest AI backend. Make sure FastAPI is running.";
+
+    }
+
+}
+
+
+
+/* =====================================================
+   UPDATE ALERT SUMMARY
+===================================================== */
+
+function updateAlertSummary(
+    alerts
+) {
+
+
+    /* Total alerts */
+
+    totalAlerts.textContent =
+        alerts.length;
+
+
+
+    /* Fear alerts */
+
+    const fearCount =
+        alerts.filter(
+            function (item) {
+
+                return (
+                    item.emotion ===
+                    "Fear"
+                );
+
+            }
+        ).length;
+
+
+    fearAlerts.textContent =
+        fearCount;
+
+
+
+    /* Latest alert */
+
+    if (
+        alerts.length > 0
+    ) {
+
+
+        const latest =
+            alerts[0];
+
+
+        latestAlert.textContent =
+            latest.emotion;
+
+
+        latestAlertTime.textContent =
+            latest.timestamp;
+
+
+    } else {
+
+
+        latestAlert.textContent =
+            "No alerts";
+
+
+        latestAlertTime.textContent =
+            "";
+
+    }
+
+}
+
+
+
+/* =====================================================
+   DISPLAY ALERTS
+===================================================== */
+
+function displayAlerts(
+    alerts
+) {
+
+
+    alertsTable.innerHTML =
+        "";
+
+
+    /* No alerts */
+
+    if (
+        alerts.length === 0
+    ) {
+
+
+        noAlerts.classList.remove(
+            "d-none"
+        );
+
+
+        alertsTableContainer.classList.add(
+            "d-none"
+        );
+
+
+        return;
+
+    }
+
+
+
+    /* Alerts exist */
+
+    noAlerts.classList.add(
+        "d-none"
+    );
+
+
+    alertsTableContainer.classList.remove(
+        "d-none"
+    );
+
+
+
+    /* Show latest 50 alerts */
+
+    const recentAlerts =
+        alerts.slice(
+            0,
+            50
+        );
+
+
+
+    recentAlerts.forEach(
+        function (alert) {
+
+
+            const row =
+                document.createElement(
+                    "tr"
+                );
+
+
+            const confidence =
+                Number(
+                    alert.confidence || 0
+                );
+
+
+
+            row.innerHTML = `
+
+                <td>
+                    ${alert.id}
+                </td>
+
+
+                <td>
+
+                    <strong>
+
+                        😨
+
+                        ${alert.emotion}
+
+                    </strong>
+
+                </td>
+
+
+                <td>
+
+                    ${confidence.toFixed(1)}%
+
+                </td>
+
+
+                <td>
+
+                    <span class="badge bg-danger">
+
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+
+                        Alert Sent
+
+                    </span>
+
+                </td>
+
+
+                <td>
+
+                    ${alert.timestamp}
+
+                </td>
+
+            `;
+
+
+            alertsTable.appendChild(
+                row
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   REFRESH BUTTON
+===================================================== */
+
+if (refreshAlerts) {
+
+    refreshAlerts.addEventListener(
+        "click",
+        function () {
+
+            loadAlerts();
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   MOBILE SIDEBAR
+===================================================== */
+
+const mobileMenu =
+    document.getElementById(
+        "mobileMenu"
+    );
+
+
+const sidebar =
+    document.querySelector(
+        ".sidebar"
+    );
+
+
+if (
+    mobileMenu &&
+    sidebar
+) {
+
+
+    mobileMenu.addEventListener(
+        "click",
+        function () {
+
+            sidebar.classList.toggle(
+                "show"
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   START ALERT PAGE
+===================================================== */
+
+loadAlerts();
+
+
+</script>
+
+
+</body>
+
+</html>
